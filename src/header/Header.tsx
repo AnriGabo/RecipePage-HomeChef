@@ -1,17 +1,22 @@
 import { Box, Typography } from "@mui/material";
 import pineappleBackground from "../images/pineappleBackground.jpg";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 const Header = () => {
   return (
-    <Box component={"header"} sx={{ gridArea: "mainBackground" }}>
+    <Box
+      component={"header"}
+      sx={{ gridArea: "mainBackground", margin: "0.7rem" }}
+    >
       <Box
         sx={{
           height: "25rem",
           backgroundImage: `url(${pineappleBackground})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "center 40%",
+          backgroundPosition: "center 35%",
           zIndex: "0",
+          borderRadius: "10px",
         }}
       >
         <Box
@@ -25,6 +30,9 @@ const Header = () => {
             gap: "2rem",
           }}
         >
+          <Box>
+            <MenuBookIcon />
+          </Box>
           <Box sx={{ paddingInlineEnd: "2.1rem" }}>
             <Typography variant={"h3"} component={"p"}>
               Chefs

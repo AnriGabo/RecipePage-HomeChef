@@ -1,14 +1,21 @@
-*::after, *::before, *{
-    padding:0;
-    margin:0;
-    box-sizing:border-box;
+*::after,
+*::before,
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.All-Wrapper{
-    display:grid;
-    grid-template-areas:
+.All-Wrapper {
+  display: grid;
+  grid-template-areas:
     "mainBackground mainBackground"
     "sidebar main";
-    grid-template-rows:30rem 1fr;
-    grid-template-columns:25rem 1fr;
+  grid-template-rows: 30rem 1fr;
+  grid-template-columns: 25rem 1fr;
+}
+
+body,
+html {
+  background-color: #0C2340;
 }
