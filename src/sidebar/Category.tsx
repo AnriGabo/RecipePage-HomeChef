@@ -1,12 +1,20 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import alltype from "../images/alltype.jpg";
 import beef from "../images/Beef2.png";
 import breakfast from "../images/breakfast2.png";
 import dessert from "../images/dessert2.png";
-import seaFood from "../images/seaFood.png";
 import pasta from "../images/pasta.png";
+import seaFood from "../images/seaFood.png";
 import starter from "../images/starter.png";
 
-export default function Category() {
+import CustomButton, { ButtonWithImage } from "../sidebar/CategoryList";
+import type React from "react";
+
+interface updateFoodList{
+    setFoodList:React.Dispatch<React.SetStateAction<string>>
+}
+
+const Category: React.FC<updateFoodList> = ({ setFoodList }) => {
   return (
     <Box component={"aside"} sx={{ gridArea: "sidebar" }}>
       <Box sx={{ marginInlineStart: "3rem" }}>
@@ -15,7 +23,6 @@ export default function Category() {
         </Typography>
       </Box>
 
-      {/* საჭმელების კატეგორიების ჩამონათვალი :) */}
       <Box
         sx={{
           display: "flex",
@@ -26,100 +33,37 @@ export default function Category() {
           gap: "1rem",
         }}
       >
-        <Button
-          sx={{
-            textTransform: "capitalize",
-            width: "auto",
-            height: "3.3rem",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            paddingInlineEnd: "9.6rem",
-            color: "white",
-            gap: "1rem",
-          }}
-        >
-          <img src={beef} style={{ width: "3rem", borderRadius: "15px" }} />
+        <CustomButton sx={{ paddingInlineEnd: "8rem" }} onClick={() => setFoodList("All Type")}>
+          <ButtonWithImage src={alltype} label="alltype food" />
+          All Type
+        </CustomButton>
+        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Beef")}>
+          <ButtonWithImage src={beef} label="Beef Food" />
           Beef
-        </Button>
-        <Button
-          sx={{
-            textTransform: "capitalize",
-            width: "auto",
-            height: "3.3rem",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            paddingInlineEnd: "8rem",
-            gap: "1rem",
-            color: "white",
-          }}
-        >
-          <img
-            src={breakfast}
-            style={{ width: "3rem", borderRadius: "15px" }}
-          />
+        </CustomButton>
+        <CustomButton sx={{ paddingInlineEnd: "7rem" }} onClick={() => setFoodList("Breakfast")}>
+          <ButtonWithImage src={breakfast} label="Breakfast food " />
           Breakfast
-        </Button>
-        <Button
-          sx={{
-            textTransform: "capitalize",
-            width: "auto",
-            height: "3.3rem",
-            border: "1px solid gray",
-            paddingInlineEnd: "9rem",
-            gap: "1rem",
-            borderRadius: "10px",
-            color: "white",
-          }}
-        >
-          <img src={dessert} style={{ width: "3rem", borderRadius: "15px" }} />
-          Desert
-        </Button>
-        <Button
-          sx={{
-            textTransform: "capitalize",
-            width: "auto",
-            height: "3.3rem",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            paddingInlineEnd: "8rem",
-            gap: "1rem",
-            color: "white",
-          }}
-        >
-          <img src={seaFood} style={{ width: "3rem", borderRadius: "15px" }} />
-          SeaFood
-        </Button>
-        <Button
-          sx={{
-            textTransform: "capitalize",
-            width: "auto",
-            height: "3.3rem",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            paddingInlineEnd: "9rem",
-            gap:"1rem",
-            color: "white",
-          }}
-        >
-          <img src={pasta} style={{ width: "3rem", borderRadius: "15px" }} />
+        </CustomButton>
+        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Dessert")}>
+          <ButtonWithImage src={dessert} label="Desert Food" />
+          Dessert
+        </CustomButton>
+        <CustomButton sx={{ paddingInlineEnd: "8rem" }} onClick={() => setFoodList("Seafood")}>
+          <ButtonWithImage src={seaFood} label="SeaFood" />
+          Seafood
+        </CustomButton>
+        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Pasta")}>
+          <ButtonWithImage src={pasta} label="Italian Cuisine Pasta" />
           Pasta
-        </Button>
-        <Button
-          sx={{
-            textTransform: "capitalize",
-            width: "auto",
-            height: "3.3rem",
-            border: "1px solid gray",
-            borderRadius: "10px",
-            paddingInlineEnd: "9rem",
-            gap:"1rem",
-            color: "white",
-          }}
-        >
-          <img src={starter} style={{ width: "3rem", borderRadius: "15px" }} />
+        </CustomButton>
+        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Starter")}>
+          <ButtonWithImage src={starter} label="Starter" />
           Starter
-        </Button>
+        </CustomButton>
       </Box>
     </Box>
   );
 }
+
+export default Category;
