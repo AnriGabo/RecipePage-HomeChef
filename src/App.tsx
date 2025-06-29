@@ -8,14 +8,13 @@ export default function App() {
 // state managment with props
 
   const [foodList, setFoodList] = useState<string>("");
-console.log(foodList);
 
   return (
     <div className="All-Wrapper">
       <Header />
       <Category setFoodList={setFoodList}/>
       {/* stateგავაგზავნით აქ */}
-      <RenderingFood />
+      <RenderingFood foodCategory={foodList}/>
     </div>
   )
 }

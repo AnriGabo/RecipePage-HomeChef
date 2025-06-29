@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, Stack, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 interface CuisineData {
   idCategory: string;
@@ -8,46 +8,68 @@ interface CuisineData {
   strCategoryDescription: string;
 }
 
-const RenderingFood = () => {
+interface FoodProps {
+  foodCategory: string;
+}
+
+const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
   const [CuisineData, setCuisineData] = useState<CuisineData[]>([]);
   const API = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
-  const chefsSecrets = async () => {
-    try {
-      const response = await fetch(API);
-      if (!response.ok) {
-        throw new Error(
-          `Data is failing, ${response.status} ${response.statusText}`
-        );
-      }
-      const convertToJson = await response.json();
-      setCuisineData(convertToJson.categories);
-      console.log(CuisineData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    chefsSecrets();
+    const fetchData = async () => {
+      try {
+        const response = await fetch(API);
+        // // Testing
+        // console.log(response);
+        if (!response.ok) {
+          throw new Error(
+            `Data is failing, ${response.status} ${response.statusText}`
+          );
+        }
+        const responseData = await response.json();
+        setCuisineData(responseData.categories);
+        console.log(CuisineData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const FilterData = CuisineData.filter((Item) => Item.strCategory === "Beef");
-  console.log(FilterData);
+  const filterData = CuisineData.filter(
+    (Item) => foodCategory === "All Type" || Item.strCategory === foodCategory
+  );
 
   // rendering
   return (
-    <Box>
-      {/* მუშაობს */}
-      {FilterData.map((Item) => (
-        <div key={Item.idCategory}>
-          <Box>
-            <Typography>{Item.strCategoryDescription}</Typography>
-            <img src={Item.strCategoryThumb} />
+    <Stack
+      component={"main"}
+      sx={{
+        gridArea: "main",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        marginBlock: "5rem",
+        gap: "3rem",
+      }}
+    >
+      {filterData.map((Item) => (
+        <Box key={Item.idCategory}>
+          {/* <Stack> */}
+          <Box sx={{ minWidth: "18rem" }}>
+            <img
+              src={Item.strCategoryThumb}
+              alt="This is Cuisine Food"
+              style={{ width: "10rem" }}
+            />
+
+            <Typography>{Item.strCategory}</Typography>
           </Box>
-        </div>
+          {/* </Stack> */}
+        </Box>
       ))}
-    </Box>
+    </Stack>
   );
 };
 
