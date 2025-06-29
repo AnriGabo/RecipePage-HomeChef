@@ -7,11 +7,11 @@ import pasta from "../images/pasta.png";
 import seaFood from "../images/seaFood.png";
 import starter from "../images/starter.png";
 
-import CustomButton, { ButtonWithImage } from "../sidebar/CategoryList";
 import type React from "react";
+import CustomButton, { ButtonWithImage } from "../sidebar/CategoryList";
 
-interface updateFoodList{
-    setFoodList:React.Dispatch<React.SetStateAction<string>>
+interface updateFoodList {
+  setFoodList: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Category: React.FC<updateFoodList> = ({ setFoodList }) => {
@@ -33,37 +33,93 @@ const Category: React.FC<updateFoodList> = ({ setFoodList }) => {
           gap: "1rem",
         }}
       >
-        <CustomButton sx={{ paddingInlineEnd: "8rem" }} onClick={() => setFoodList("All Type")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "8rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("All Type")}
+        >
           <ButtonWithImage src={alltype} label="alltype food" />
           All Type
         </CustomButton>
-        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Beef")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "9rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("Beef")}
+        >
           <ButtonWithImage src={beef} label="Beef Food" />
           Beef
         </CustomButton>
-        <CustomButton sx={{ paddingInlineEnd: "7rem" }} onClick={() => setFoodList("Breakfast")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "7rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("Breakfast")}
+        >
           <ButtonWithImage src={breakfast} label="Breakfast food " />
           Breakfast
         </CustomButton>
-        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Dessert")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "8rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("Dessert")}
+        >
           <ButtonWithImage src={dessert} label="Desert Food" />
           Dessert
         </CustomButton>
-        <CustomButton sx={{ paddingInlineEnd: "8rem" }} onClick={() => setFoodList("Seafood")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "8rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("Seafood")}
+        >
           <ButtonWithImage src={seaFood} label="SeaFood" />
           Seafood
         </CustomButton>
-        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Pasta")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "9rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("Pasta")}
+        >
           <ButtonWithImage src={pasta} label="Italian Cuisine Pasta" />
           Pasta
         </CustomButton>
-        <CustomButton sx={{ paddingInlineEnd: "9rem" }} onClick={() => setFoodList("Starter")}>
+        <CustomButton
+          sx={{
+            paddingInlineEnd: "9rem",
+            "&:focus": {
+              backgroundColor: "#898989",
+            },
+          }}
+          onClick={() => setFoodList("Starter")}
+        >
           <ButtonWithImage src={starter} label="Starter" />
           Starter
         </CustomButton>
       </Box>
     </Box>
   );
-}
+};
 
 export default Category;
