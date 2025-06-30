@@ -1,5 +1,5 @@
-import { Box, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import FoodList from "./FoodList";
 
 interface CuisineData {
   idCategory: string;
@@ -20,8 +20,7 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(API);
-        // // Testing
-        // console.log(response);
+
         if (!response.ok) {
           throw new Error(
             `Data is failing, ${response.status} ${response.statusText}`
@@ -40,36 +39,10 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
 
   const filterData = CuisineData.filter(
     (Item) => foodCategory === "All Type" || Item.strCategory === foodCategory
-  );
+  ).slice(0, 10);
 
-  // rendering
   return (
-    <Stack
-      component={"main"}
-      sx={{
-        gridArea: "main",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        marginBlock: "5rem",
-        gap: "3rem",
-      }}
-    >
-      {filterData.map((Item) => (
-        <Box key={Item.idCategory}>
-          {/* <Stack> */}
-          <Box sx={{ minWidth: "18rem" }}>
-            <img
-              src={Item.strCategoryThumb}
-              alt="This is Cuisine Food"
-              style={{ width: "10rem" }}
-            />
-
-            <Typography>{Item.strCategory}</Typography>
-          </Box>
-          {/* </Stack> */}
-        </Box>
-      ))}
-    </Stack>
+   <FoodList filterData={filterData} />
   );
 };
 

@@ -12,7 +12,7 @@
     "mainBackground mainBackground"
     "sidebar main";
   grid-template-rows: 30rem 1fr;
-  grid-template-columns: 25rem 1fr;
+  grid-template-columns: 22rem 1fr;
 }
 
 body,

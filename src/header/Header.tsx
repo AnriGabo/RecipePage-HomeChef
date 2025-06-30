@@ -14,7 +14,7 @@ const Header = () => {
           backgroundImage: `url(${pineappleBackground})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "center 35%",
+          backgroundPosition: "center 37%",
           zIndex: "0",
           borderRadius: "10px",
         }}
