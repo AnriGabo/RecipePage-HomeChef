@@ -5,16 +5,13 @@ import Category from "./sidebar/Category";
 import RenderingFood from "./main/RenderingFood";
 
 export default function App() {
-// state managment with props
-
   const [foodList, setFoodList] = useState<string>("");
 
   return (
     <div className="All-Wrapper">
       <Header />
-      <Category setFoodList={setFoodList}/>
-      {/* stateგავაგზავნით აქ */}
-      <RenderingFood foodCategory={foodList}/>
+      <Category setFoodList={setFoodList} />
+      <RenderingFood foodCategory={foodList} />
     </div>
-  )
+  );
 }

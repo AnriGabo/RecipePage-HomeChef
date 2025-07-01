@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import pineappleBackground from "../images/pineappleBackground.jpg";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 
@@ -19,36 +19,37 @@ const Header = () => {
           borderRadius: "10px",
         }}
       >
-        <Box
+        <Stack
           sx={{
             zIndex: "1000",
             display: "flex",
             flexDirection: "column",
-            alignItems: "end",
-            marginInlineEnd: "25rem",
-            paddingBlockStart: "5rem",
+            alignItems: "center",
+            marginInlineStart: "27rem",
+            paddingBlockStart: "3rem",
             gap: "2rem",
+            
           }}
         >
-          <Box>
-            <MenuBookIcon />
+          <Box sx={{paddingInlineEnd:"7.3rem"}}>
+            <MenuBookIcon sx={{fontSize:"2.3rem"}} />
           </Box>
-          <Box sx={{ paddingInlineEnd: "2.1rem" }}>
-            <Typography variant={"h3"} component={"p"}>
+          <Box sx={{paddingInlineEnd:"2rem"}}>
+            <Typography variant={"h3"} component={"p"} sx={{fontFamily: '"Georgia", "Palatino Linotype", "Book Antiqua", "Palatino", serif'}}>
               Chefs
             </Typography>
           </Box>
-          <Box>
-            <Typography variant={"h3"} component={"p"}>
+          <Box sx={{paddingInlineStart:"9rem"}}>
+            <Typography variant={"h2"} component={"p"} sx={{fontFamily: '"Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif'}}>
               Academy
             </Typography>
           </Box>
           <Box>
-            <Typography variant={"h3"} component={"p"}>
+            <Typography variant={"h3"} component={"p"} sx={{fontFamily: '"Georgia", "Palatino Linotype", "Book Antiqua", "Palatino", serif'}}>
               Secrets
             </Typography>
           </Box>
-        </Box>
+        </Stack>
       </Box>
     </Box>
   );

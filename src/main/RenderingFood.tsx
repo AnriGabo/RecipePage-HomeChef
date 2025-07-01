@@ -16,6 +16,8 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
   const [CuisineData, setCuisineData] = useState<CuisineData[]>([]);
   const API = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
+  const [InputState, setInputState] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,11 +40,19 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
   }, []);
 
   const filterData = CuisineData.filter(
-    (Item) => foodCategory === "All Type" || Item.strCategory === foodCategory
+    (Item) =>
+      foodCategory === "All Type" ||
+      Item.strCategory === InputState ||
+      Item.strCategory === foodCategory
   ).slice(0, 10);
 
   return (
-   <FoodList filterData={filterData} />
+    // Input State მენეჯემნტი გავაკეთეთ მშობელი კომპონენტიდან :), გადავეცით სთეითი და სეთ სთეით ი
+    <FoodList
+      filterData={filterData}
+      setInputState={setInputState}
+      InputState={InputState}
+    />
   );
 };
 

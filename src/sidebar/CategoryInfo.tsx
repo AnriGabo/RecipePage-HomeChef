@@ -13,9 +13,20 @@ interface updateFoodList {
 }
 
 const CategoryInfo: React.FC<updateFoodList> = ({ setFoodList }) => {
-    // ყველაფრის მასივში გაერთიანება და მერე დამაპვა
+  const categories = [
+    { label: "All Type", image: alltype, alt: "alltype food", padding: "8rem" },
+    { label: "Beef", image: beef, alt: "Beef Food", padding: "9rem" },
+    { label: "Dessert", image: dessert, alt: "Desert Food", padding: "8rem" },
+    { label: "Seafood", image: seaFood, alt: "SeaFood", padding: "8rem" },
+    {
+      label: "Pasta",
+      image: pasta,
+      alt: "Italian Cuisine Pasta",
+      padding: "9rem",
+    },
+    { label: "Starter", image: starter, alt: "Starter", padding: "9rem" },
+  ];
 
-    // const 
   return (
     <Box component={"aside"} sx={{ gridArea: "sidebar" }}>
       <Box sx={{ marginInlineStart: "3rem" }}>
@@ -34,79 +45,21 @@ const CategoryInfo: React.FC<updateFoodList> = ({ setFoodList }) => {
           gap: "1rem",
         }}
       >
-        <CustomButton
-          sx={{
-            paddingInlineEnd: "8rem",
-            "&:focus": {
-              backgroundColor: "#898989",
-            },
-          }}
-          onClick={() => setFoodList("All Type")}
-        >
-          <ButtonWithImage src={alltype} label="alltype food" />
-          All Type
-        </CustomButton>
-        <CustomButton
-          sx={{
-            paddingInlineEnd: "9rem",
-            "&:focus": {
-              backgroundColor: "#898989",
-            },
-          }}
-          onClick={() => setFoodList("Beef")}
-        >
-          <ButtonWithImage src={beef} label="Beef Food" />
-          Beef
-        </CustomButton>
-
-        <CustomButton
-          sx={{
-            paddingInlineEnd: "8rem",
-            "&:focus": {
-              backgroundColor: "#898989",
-            },
-          }}
-          onClick={() => setFoodList("Dessert")}
-        >
-          <ButtonWithImage src={dessert} label="Desert Food" />
-          Dessert
-        </CustomButton>
-        <CustomButton
-          sx={{
-            paddingInlineEnd: "8rem",
-            "&:focus": {
-              backgroundColor: "#898989",
-            },
-          }}
-          onClick={() => setFoodList("Seafood")}
-        >
-          <ButtonWithImage src={seaFood} label="SeaFood" />
-          Seafood
-        </CustomButton>
-        <CustomButton
-          sx={{
-            paddingInlineEnd: "9rem",
-            "&:focus": {
-              backgroundColor: "#898989",
-            },
-          }}
-          onClick={() => setFoodList("Pasta")}
-        >
-          <ButtonWithImage src={pasta} label="Italian Cuisine Pasta" />
-          Pasta
-        </CustomButton>
-        <CustomButton
-          sx={{
-            paddingInlineEnd: "9rem",
-            "&:focus": {
-              backgroundColor: "#898989",
-            },
-          }}
-          onClick={() => setFoodList("Starter")}
-        >
-          <ButtonWithImage src={starter} label="Starter" />
-          Starter
-        </CustomButton>
+        {categories.map(({ label, image, alt, padding }) => (
+          <CustomButton
+            key={label}
+            sx={{
+              paddingInlineEnd: padding,
+              "&:focus": {
+                backgroundColor: "#898989",
+              },
+            }}
+            onClick={() => setFoodList(label)}
+          >
+            <ButtonWithImage src={image} label={alt} />
+            {label}
+          </CustomButton>
+        ))}
       </Box>
     </Box>
   );
