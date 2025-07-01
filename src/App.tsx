@@ -11,7 +11,7 @@ export default function App() {
     <div className="All-Wrapper">
       <Header />
       <Category setFoodList={setFoodList} />
-      <RenderingFood foodCategory={foodList} />
+      <RenderingFood foodCategory={foodList}  setFoodList={setFoodList}/>
     </div>
   );
 }

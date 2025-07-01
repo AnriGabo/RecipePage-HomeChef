@@ -10,9 +10,10 @@ interface CuisineData {
 
 interface FoodProps {
   foodCategory: string;
+  setFoodList:React.Dispatch<React.SetStateAction<string>>
 }
 
-const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
+const RenderingFood: React.FC<FoodProps> = ({ foodCategory,setFoodList }) => {
   const [CuisineData, setCuisineData] = useState<CuisineData[]>([]);
   const API = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
@@ -43,7 +44,7 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
     (Item) =>
       foodCategory === "All Type" ||
     // Input State ში რეალურად ინახება,Searchში აკრეფილი ნებისმიერი ტექსტი
-      Item.strCategory.toLowerCase().includes(InputState.toLowerCase()) ||
+      Item.strCategory.toLowerCase() === InputState.toLowerCase() ||
       Item.strCategory === foodCategory
   ).slice(0, 10);
 
@@ -54,6 +55,7 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
       filterData={filterData}
       setInputState={setInputState}
       InputState={InputState}
+      setFoodList={setFoodList}
     />
   );
 };
