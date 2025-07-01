@@ -57,7 +57,7 @@ const FoodList: React.FC<FilterData> = ({
             <Box
               sx={{
                 minWidth: "20rem",
-                paddingInlineStart: "0.5rem",
+                paddingInlineStart: "3rem",
                 paddingBlock: "1rem",
                 backgroundColor: "#0C2340",
                 borderRadius: "20px",
@@ -75,25 +75,23 @@ const FoodList: React.FC<FilterData> = ({
                   justifyContent: "center",
                 }}
               />
-
-              <Box
-                sx={{ marginBlockStart: "2rem", paddingInlineStart: "1rem" }}
+            </Box>
+            <Box sx={{marginBlockStart:"0.5rem"}}>
+              <Typography
+                sx={{
+                  color: "#0066b2",
+                  fontSize: "1.4rem",
+                  textDecoration: "underline",
+                  textDecorationColor: "#0066b2",
+                  textTransform: "capitalize",
+                  fontFamily:
+                    "'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+                  cursor: "pointer",
+                  paddingInlineStart: "1.5rem",
+                }}
               >
-                <Typography
-                  sx={{
-                    color: "#0066b2",
-                    fontSize: "1.4rem",
-                    textDecoration: "underline",
-                    textDecorationColor: "#0066b2",
-                    textTransform: "capitalize",
-                    fontFamily:
-                      "'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-                    cursor: "pointer",
-                  }}
-                >
-                  {Item.strCategory}
-                </Typography>
-              </Box>
+                {Item.strCategory}
+              </Typography>
             </Box>
           </Stack>
         ))}

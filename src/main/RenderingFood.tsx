@@ -42,9 +42,11 @@ const RenderingFood: React.FC<FoodProps> = ({ foodCategory }) => {
   const filterData = CuisineData.filter(
     (Item) =>
       foodCategory === "All Type" ||
-      Item.strCategory === InputState ||
+    // Input State ში რეალურად ინახება,Searchში აკრეფილი ნებისმიერი ტექსტი
+      Item.strCategory.toLowerCase().includes(InputState.toLowerCase()) ||
       Item.strCategory === foodCategory
   ).slice(0, 10);
+
 
   return (
     // Input State მენეჯემნტი გავაკეთეთ მშობელი კომპონენტიდან :), გადავეცით სთეითი და სეთ სთეით ი
