@@ -1,5 +1,5 @@
 import CloseIcon from "@mui/icons-material/Close";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import type React from "react";
 
 interface FoodItem {
@@ -12,14 +12,14 @@ interface FilterData {
   filterData: FoodItem[];
   setInputState: React.Dispatch<React.SetStateAction<string>>;
   InputState: string;
-  setFoodList:React.Dispatch<React.SetStateAction<string>>;
+  setFoodList: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const FoodList: React.FC<FilterData> = ({
   filterData,
   setInputState,
   InputState,
-  setFoodList
+  setFoodList,
 }) => {
   return (
     <Stack>
@@ -34,14 +34,21 @@ const FoodList: React.FC<FilterData> = ({
             height: "2.5rem",
             borderRadius: "20px",
             textIndent: "1rem",
-            zIndex:"0"
+            zIndex: "0",
           }}
         ></input>
       </Box>
-      
-      <div onClick={() => setFoodList("")}>
-        <CloseIcon />
-      </div>
+
+      <Box
+        onClick={() => setFoodList("")}
+        sx={{ marginInline: "20rem", marginBlock: "-2.3rem",backgroundColor:"red",width:"0rem" }}
+      >
+        <Button variant="contained">
+          {" "}
+          <CloseIcon />
+          Clear
+        </Button>
+      </Box>
 
       <Stack
         component={"main"}
@@ -49,7 +56,7 @@ const FoodList: React.FC<FilterData> = ({
           gridArea: "main",
           flexDirection: "row",
           flexWrap: "wrap",
-          marginBlock: "2rem",
+          marginBlock: "5rem",
           gap: "3.5rem",
         }}
       >
